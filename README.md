@@ -4,10 +4,6 @@ Premium instant photo booth and 360° video booth rental website for **Gajare Ph
 
 Built with **Next.js 16**, **Tailwind CSS v4**, and **TypeScript**. Designed with a luxury black-gold-white aesthetic matching the brand's premium positioning.
 
-## Live Demo
-
-> Coming soon
-
 ## Tech Stack
 
 | Layer | Technology |
@@ -117,13 +113,13 @@ public/
 
 ## Location
 
-**Gajare Photography**
-Room No - 503, 6-C, Malvani Sai Savli CHSL,
-New Mahada Colony, near Billabong School,
-Jankalyan Nagar, Malad West,
+**Gajare Photography**  
+Room No - 503, 6-C, Malvani Sai Savli CHSL,  
+New Mahada Colony, near Billabong School,  
+Jankalyan Nagar, Malad West,  
 Mumbai, Maharashtra 400095
 
-[Get Directions →](https://www.google.com/maps/dir//Gajare+Photography+-+Best+Photographer+in+Mumbai)
+[Get Directions →](https://www.google.com/maps/dir//Gajare+Photography+-+Best+Photographer+in+Mumbai,+Room+No+-+503+,+6-C+,+Malvani+Sai+Savli+CHSL+New+Mahada+Colony,+near+Billabong+School,+Jankalyan+Nagar,+Malad+West,+Mumbai,+Maharashtra+400095/@19.2041522,72.8198668,17z)
 
 ## Brand
 
