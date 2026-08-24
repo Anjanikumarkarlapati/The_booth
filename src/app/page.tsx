@@ -12,12 +12,11 @@ import SectionHeading from '@/components/SectionHeading';
 import Reveal from '@/components/Reveal';
 import AnimatedCounter from '@/components/AnimatedCounter';
 import MagneticButton from '@/components/MagneticButton';
-import LocationMap from '@/components/LocationMap';
 
 /* ─── DATA ─── */
 const SERVICE_TAGS = [
   'Instant Photo Prints',
-  '360\u00B0 Video Booth',
+  '360° Video Booth',
   'Wedding Photo Booth',
   'Corporate Events',
   'Birthday Parties',
@@ -53,19 +52,19 @@ const SERVICES_PREVIEW = [
 ];
 
 const PACKAGE_INCLUDES = [
-  '100 instant prints (4\u00D76)',
+  '100 instant prints (4×6)',
   'Professional photographer',
   'Booth assistant',
   'Premium printer on-site',
   'Premium frames',
-  'Live printing 3\u20134 hours',
+  'Live printing 3–4 hours',
 ];
 
 const GALLERY_CATEGORIES = [
   { label: 'Weddings', image: PHOTOS.wedding2 },
   { label: 'Engagements', image: PHOTOS.engagement },
   { label: 'Baby Shower', image: PHOTOS.babyshower },
-  { label: '360\u00B0 Booth', image: PHOTOS.guests2 },
+  { label: '360° Booth', image: PHOTOS.guests2 },
 ];
 
 const STEPS = [
@@ -77,8 +76,8 @@ const STEPS = [
 ];
 
 const FAQS = [
-  { q: 'How far in advance should I book?', a: 'We recommend booking 2\u20134 weeks before your event to ensure availability, especially during the wedding season (November\u2013February).' },
-  { q: 'How many prints are included?', a: 'The Silver package includes 100 instant 4\u00D76 prints. Additional prints are available at \u20B980 per print.' },
+  { q: 'How far in advance should I book?', a: 'We recommend booking 2–4 weeks before your event to ensure availability, especially during the wedding season (November–February).' },
+  { q: 'How many prints are included?', a: 'The Silver package includes 100 instant 4×6 prints. Additional prints are available at ₹80 per print.' },
   { q: 'Do you travel outside Mumbai?', a: 'Yes. Travel within Mumbai is included. For locations outside the city, a travel surcharge applies based on distance.' },
   { q: 'Can we customise the print design?', a: 'Absolutely. We offer custom branding with your names, event date, hashtag or logo on every print.' },
   { q: 'What equipment do you bring?', a: 'A professional DSLR camera, studio lighting, instant dye-sublimation printer, backdrop stand, props box and all cables and power strips.' },
@@ -89,6 +88,16 @@ const STATS = [
   { value: 50000, suffix: '+', label: 'Prints Delivered' },
   { value: 5, suffix: '.0', label: 'Google Rating' },
   { value: 100, suffix: '%', label: 'Client Satisfaction' },
+];
+
+/* Photo Booth Examples - photos shown inside booth frame mockups */
+const BOOTH_EXAMPLES = [
+  { image: PHOTOS.wedding, label: 'Wedding Celebration', frame: 'Classic 4×6' },
+  { image: PHOTOS.engagement, label: 'Engagement Party', frame: 'Elegant Strip' },
+  { image: PHOTOS.babyshower, label: 'Baby Shower', frame: 'Fun Polaroid' },
+  { image: PHOTOS.guests, label: 'Corporate Event', frame: 'Branded Print' },
+  { image: PHOTOS.wedding2, label: 'Reception Night', frame: 'Gold Frame' },
+  { image: PHOTOS.prewedding, label: 'Pre-Wedding', frame: 'Modern Grid' },
 ];
 
 export default function HomePage() {
@@ -110,7 +119,6 @@ export default function HomePage() {
             background: 'linear-gradient(135deg, rgba(10,10,10,.94) 0%, rgba(10,10,10,.7) 50%, rgba(10,10,10,.4) 100%)',
           }}
         />
-        {/* Decorative gold line at bottom */}
         <div className="absolute bottom-0 left-0 right-0 h-px gold-line-animated" />
 
         <div className="relative z-10 max-w-[1240px] mx-auto px-6 py-20 md:py-28 w-full">
@@ -137,7 +145,6 @@ export default function HomePage() {
             </p>
           </Reveal>
 
-          {/* Service pills */}
           <Reveal delay={400}>
             <div className="flex flex-wrap gap-2.5 mt-8">
               {SERVICE_TAGS.map((tag, i) => (
@@ -152,7 +159,6 @@ export default function HomePage() {
             </div>
           </Reveal>
 
-          {/* CTA buttons */}
           <Reveal delay={550}>
             <div className="flex flex-wrap gap-4 mt-10">
               <MagneticButton href="/contact" strength={0.15}>
@@ -178,7 +184,6 @@ export default function HomePage() {
             </div>
           </Reveal>
 
-          {/* Trust indicators */}
           <Reveal delay={700}>
             <div className="flex flex-wrap gap-6 mt-12 text-white/70 text-sm">
               <span className="flex items-center gap-2">
@@ -302,7 +307,7 @@ export default function HomePage() {
                 <p className="gp-eyebrow mb-4">Featured Package</p>
                 <h2 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold leading-[1.08] tracking-[-0.01em] mb-5">
                   Premium Instant Photo Booth at{' '}
-                  <span className="text-gold-gradient">\u20B99,999</span>
+                  <span className="text-gold-gradient">&#x20B9;9,999</span>
                 </h2>
                 <p className="text-stone-600 leading-relaxed mb-8 text-base">
                   Our most-booked package delivers everything you need. A professional team arrives,
@@ -327,13 +332,12 @@ export default function HomePage() {
 
             <Reveal direction="right" delay={200}>
               <div className="relative border-2 border-gold-500 rounded-lg p-7 bg-white shadow-lg hover:shadow-xl transition-shadow duration-300">
-                {/* Glow effect */}
                 <div className="absolute -inset-0.5 bg-gradient-to-br from-gold-400/20 via-transparent to-gold-600/20 rounded-lg blur-sm -z-10" />
                 <span className="absolute -top-3.5 left-6 bg-gold-500 text-ink-800 text-[11px] tracking-[0.14em] uppercase font-bold px-4 py-1.5 rounded-sm shadow-sm">
                   Most Booked
                 </span>
                 <p className="gp-eyebrow mt-3">Silver</p>
-                <p className="font-display text-4xl lg:text-5xl font-bold mt-2 text-[var(--text-heading)]">\u20B99,999</p>
+                <p className="font-display text-4xl lg:text-5xl font-bold mt-2 text-[var(--text-heading)]">&#x20B9;9,999</p>
                 <p className="text-stone-500 text-sm mt-1 mb-6">Per event &middot; Inclusive of taxes</p>
                 <div className="gold-line mb-6" />
                 <ul className="space-y-3.5">
@@ -355,6 +359,63 @@ export default function HomePage() {
               </div>
             </Reveal>
           </div>
+        </div>
+      </section>
+
+      {/* ════════ PHOTO BOOTH EXAMPLES ════════ */}
+      <section className="on-dark bg-ink-800 py-20 md:py-28">
+        <div className="max-w-[1240px] mx-auto px-6">
+          <Reveal>
+            <SectionHeading
+              eyebrow="Photo Booth Examples"
+              title="See your photos in our booth frames"
+              lede="Real event photos printed in our premium booth formats. This is what your guests take home."
+            />
+          </Reveal>
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-6 mt-4">
+            {BOOTH_EXAMPLES.map(({ image, label, frame }, i) => (
+              <Reveal key={label} delay={i * 100}>
+                <div className="group relative">
+                  {/* Booth frame mockup */}
+                  <div className="relative bg-white rounded-sm p-3 shadow-xl hover:shadow-2xl transition-shadow duration-300 hover:-translate-y-1 transition-transform">
+                    {/* Photo inside frame */}
+                    <div className="relative aspect-[3/4] overflow-hidden rounded-sm">
+                      <Image
+                        src={image}
+                        alt={label}
+                        fill
+                        className="object-cover group-hover:scale-[1.03] transition-transform duration-500"
+                        unoptimized
+                      />
+                    </div>
+                    {/* Frame footer with branding */}
+                    <div className="mt-3 pb-1 text-center">
+                      <p className="text-[10px] uppercase tracking-[0.2em] text-stone-400 font-medium">Gajare Photo Booth</p>
+                      <div className="w-8 h-px bg-gold-500/50 mx-auto my-1.5" />
+                      <p className="text-xs text-stone-600 font-medium">{label}</p>
+                    </div>
+                    {/* Gold corner accents */}
+                    <div className="absolute top-1.5 left-1.5 w-4 h-4 border-t-2 border-l-2 border-gold-500/40 rounded-tl-sm" />
+                    <div className="absolute top-1.5 right-1.5 w-4 h-4 border-t-2 border-r-2 border-gold-500/40 rounded-tr-sm" />
+                    <div className="absolute bottom-1.5 left-1.5 w-4 h-4 border-b-2 border-l-2 border-gold-500/40 rounded-bl-sm" />
+                    <div className="absolute bottom-1.5 right-1.5 w-4 h-4 border-b-2 border-r-2 border-gold-500/40 rounded-br-sm" />
+                  </div>
+                  {/* Frame type label */}
+                  <p className="mt-3 text-center text-xs text-white/50">{frame}</p>
+                </div>
+              </Reveal>
+            ))}
+          </div>
+          <Reveal delay={600}>
+            <div className="text-center mt-12">
+              <Link
+                href="/designs"
+                className="bg-gold-500 text-ink-800 font-semibold text-[13px] tracking-[0.14em] uppercase px-8 py-3.5 rounded-sm btn-glow inline-flex items-center gap-2"
+              >
+                See All Layouts <ArrowRight className="w-4 h-4" />
+              </Link>
+            </div>
+          </Reveal>
         </div>
       </section>
 
@@ -414,7 +475,6 @@ export default function HomePage() {
             {STEPS.map(({ icon: Icon, title, body }, idx) => (
               <Reveal key={title} delay={idx * 120}>
                 <div className="relative flex flex-col items-center text-center">
-                  {/* Connecting line */}
                   {idx < STEPS.length - 1 && (
                     <div className="hidden md:block absolute top-7 left-[calc(50%+32px)] w-[calc(100%-64px)] h-px bg-gradient-to-r from-gold-500/50 to-gold-500/10" />
                   )}
@@ -468,22 +528,6 @@ export default function HomePage() {
               </div>
             </Reveal>
           </div>
-        </div>
-      </section>
-
-      {/* ════════ LOCATION ════════ */}
-      <section className="on-dark bg-ink-800 py-20 md:py-28">
-        <div className="max-w-[1240px] mx-auto px-6">
-          <Reveal>
-            <SectionHeading
-              eyebrow="Find Us"
-              title="Visit our studio in Mumbai"
-              lede="Malad West, Mumbai. Walk-ins welcome for booth demos and design consultations."
-            />
-          </Reveal>
-          <Reveal delay={200}>
-            <LocationMap />
-          </Reveal>
         </div>
       </section>
 

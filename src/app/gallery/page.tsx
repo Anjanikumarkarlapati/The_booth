@@ -17,7 +17,7 @@ const GALLERY_DATA: [string, string][] = [
   ['Baby Shower', PHOTOS.baby2],
   ['Corporate Events', PHOTOS.corporate],
   ['Corporate Events', PHOTOS.guests],
-  ['360\u00B0 Booth', PHOTOS.guests2],
+  ['360° Booth', PHOTOS.guests2],
   ['Pre-wedding', PHOTOS.prewedding],
   ['Pre-wedding', PHOTOS.prewedding2],
   ['Pre-wedding', PHOTOS.prewedding3],
@@ -25,7 +25,7 @@ const GALLERY_DATA: [string, string][] = [
   ['Maternity', PHOTOS.maternity],
 ];
 
-const CATEGORIES = ['All', 'Weddings', 'Engagements', 'Baby Shower', 'Corporate Events', '360\u00B0 Booth', 'Pre-wedding', 'Maternity'];
+const CATEGORIES = ['All', 'Weddings', 'Engagements', 'Baby Shower', 'Corporate Events', '360° Booth', 'Pre-wedding', 'Maternity'];
 
 export default function GalleryPage() {
   const [active, setActive] = useState('All');
@@ -35,7 +35,7 @@ export default function GalleryPage() {
 
   return (
     <>
-      {/* ════════ HERO ════════ */}
+      {/* â•â•â•â•â•â•â•â• HERO â•â•â•â•â•â•â•â• */}
       <section className="relative on-dark bg-ink-800 py-20 md:py-28 overflow-hidden">
         <Image
           src={PHOTOS.engagement2}
@@ -56,7 +56,7 @@ export default function GalleryPage() {
         </div>
       </section>
 
-      {/* ════════ FILTER + GRID ════════ */}
+      {/* â•â•â•â•â•â•â•â• FILTER + GRID â•â•â•â•â•â•â•â• */}
       <section className="bg-paper py-16 md:py-24">
         <div className="max-w-[1240px] mx-auto px-6">
           {/* Filter row */}
@@ -101,7 +101,7 @@ export default function GalleryPage() {
         </div>
       </section>
 
-      {/* ════════ LIGHTBOX ════════ */}
+      {/* â•â•â•â•â•â•â•â• LIGHTBOX â•â•â•â•â•â•â•â• */}
       {lightbox && (
         <div
           className="fixed inset-0 z-[9999] bg-ink-900/90 backdrop-blur-sm flex items-center justify-center p-4"

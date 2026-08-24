@@ -5,71 +5,71 @@ import SectionHeading from '@/components/SectionHeading';
 
 const LAYOUTS = [
   {
-    name: 'Classic 2\u00D76 Strip',
-    format: '2 \u00D7 6 inch',
+    name: 'Classic 2×6 Strip',
+    format: '2 × 6 inch',
     description: 'Two vertical photos in a classic photo-strip format. Perfect for weddings.',
     grid: 'grid-rows-2',
     cells: 2,
   },
   {
-    name: 'Elegant 4\u00D76',
-    format: '4 \u00D7 6 inch',
+    name: 'Elegant 4×6',
+    format: '4 × 6 inch',
     description: 'Single full-frame portrait. Clean and timeless.',
     grid: '',
     cells: 1,
   },
   {
     name: 'Modern Grid',
-    format: '4 \u00D7 6 inch',
-    description: 'Four equal frames in a 2\u00D72 grid layout. Fun and dynamic.',
+    format: '4 × 6 inch',
+    description: 'Four equal frames in a 2×2 grid layout. Fun and dynamic.',
     grid: 'grid-cols-2 grid-rows-2',
     cells: 4,
   },
   {
     name: 'Polaroid Style',
-    format: '4 \u00D7 6 inch',
+    format: '4 × 6 inch',
     description: 'Single photo with a wide white border and handwritten-style text area below.',
     grid: '',
     cells: 1,
   },
   {
     name: 'Photo Strip Duo',
-    format: '2 \u00D7 6 inch',
+    format: '2 × 6 inch',
     description: 'Three stacked frames. Guests get two copies \u2014 one to keep, one for the guest book.',
     grid: 'grid-rows-3',
     cells: 3,
   },
   {
     name: 'Six Frame Mosaic',
-    format: '4 \u00D7 6 inch',
-    description: 'Six small frames in a 3\u00D72 mosaic. Maximum variety in one print.',
+    format: '4 × 6 inch',
+    description: 'Six small frames in a 3×2 mosaic. Maximum variety in one print.',
     grid: 'grid-cols-3 grid-rows-2',
     cells: 6,
   },
   {
     name: 'Landscape Wide',
-    format: '6 \u00D7 4 inch',
+    format: '6 × 4 inch',
     description: 'Horizontal single frame for group shots and wide backdrops.',
     grid: '',
     cells: 1,
   },
   {
     name: 'Portrait Classic',
-    format: '4 \u00D7 6 inch',
+    format: '4 × 6 inch',
     description: 'Full portrait with a thin branded border and event details at the bottom.',
     grid: '',
     cells: 1,
   },
   {
     name: 'Minimalist Single',
-    format: '4 \u00D7 6 inch',
+    format: '4 × 6 inch',
     description: 'Edge-to-edge photo with minimal branding. Lets the image speak.',
     grid: '',
     cells: 1,
   },
   {
     name: 'Collage Mix',
-    format: '4 \u00D7 6 inch',
+    format: '4 × 6 inch',
     description: 'Five frames in mixed sizes \u2014 one large hero and four small thumbnails.',
     grid: 'grid-cols-2 grid-rows-3',
     cells: 5,
@@ -79,7 +79,7 @@ const LAYOUTS = [
 export default function DesignsPage() {
   return (
     <>
-      {/* ════════ HERO ════════ */}
+      {/* â•â•â•â•â•â•â•â• HERO â•â•â•â•â•â•â•â• */}
       <section className="relative on-dark bg-ink-800 py-20 md:py-28 overflow-hidden">
         <Image
           src={PHOTOS.frames}
@@ -101,7 +101,7 @@ export default function DesignsPage() {
         </div>
       </section>
 
-      {/* ════════ LAYOUTS GRID ════════ */}
+      {/* â•â•â•â•â•â•â•â• LAYOUTS GRID â•â•â•â•â•â•â•â• */}
       <section className="bg-paper py-16 md:py-24">
         <div className="max-w-[1240px] mx-auto px-6">
           <SectionHeading

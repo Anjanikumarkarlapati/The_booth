@@ -13,7 +13,7 @@ export const viewport: Viewport = {
 export const metadata: Metadata = {
   title: "Gajare Photo Booth - Mumbai's Premium Instant Photo Booth Service",
   description:
-    'Instant photo prints, 360 video booth, and premium DSLR quality photo booth rental for weddings, engagements, birthdays, corporate events and baby showers in Mumbai. Starting at \u20B99,999.',
+    'Instant photo prints, 360 video booth, and premium DSLR quality photo booth rental for weddings, engagements, birthdays, corporate events and baby showers in Mumbai. Starting at ?9,999.',
   keywords: [
     'photo booth Mumbai',
     'instant photo booth',
@@ -27,7 +27,7 @@ export const metadata: Metadata = {
   ],
   openGraph: {
     title: "Gajare Photo Booth - Mumbai's Premium Instant Photo Booth",
-    description: 'Instant 4x6 prints, 360 video booth, professional photographer. Starting \u20B99,999. Weddings, birthdays, corporate events.',
+    description: 'Instant 4x6 prints, 360 video booth, professional photographer. Starting ?9,999. Weddings, birthdays, corporate events.',
     type: 'website',
     locale: 'en_IN',
     siteName: 'Gajare Photo Booth',

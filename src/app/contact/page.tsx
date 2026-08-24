@@ -11,7 +11,7 @@ export default function ContactPage() {
 
   return (
     <>
-      {/* ════════ HERO ════════ */}
+      {/* â•â•â•â•â•â•â•â• HERO â•â•â•â•â•â•â•â• */}
       <section className="relative on-dark bg-ink-800 py-20 md:py-28 overflow-hidden">
         <Image
           src={PHOTOS.wedding3}
@@ -32,11 +32,11 @@ export default function ContactPage() {
         </div>
       </section>
 
-      {/* ════════ FORM + SIDEBAR ════════ */}
+      {/* â•â•â•â•â•â•â•â• FORM + SIDEBAR â•â•â•â•â•â•â•â• */}
       <section className="bg-paper py-16 md:py-24">
         <div className="max-w-[1240px] mx-auto px-6">
           <div className="grid lg:grid-cols-[1.4fr_1fr] gap-10">
-            {/* ─── LEFT: FORM ─── */}
+            {/* â”€â”€â”€ LEFT: FORM â”€â”€â”€ */}
             <div className="bg-white border border-black/[.12] rounded-lg p-6 md:p-8 shadow-sm">
               <h2 className="font-display text-2xl font-medium mb-6">Inquiry Form</h2>
               <form className="space-y-5" onSubmit={(e) => e.preventDefault()}>
@@ -142,10 +142,10 @@ export default function ContactPage() {
                   >
                     <option value="">Select approximate guests</option>
                     <option value="50">Up to 50</option>
-                    <option value="100">50 \u2013 100</option>
-                    <option value="200">100 \u2013 200</option>
-                    <option value="300">200 \u2013 300</option>
-                    <option value="500">300 \u2013 500</option>
+                    <option value="100">50 – 100</option>
+                    <option value="200">100 – 200</option>
+                    <option value="300">200 – 300</option>
+                    <option value="500">300 – 500</option>
                     <option value="500+">500+</option>
                   </select>
                 </div>
@@ -160,7 +160,7 @@ export default function ContactPage() {
                     className="w-full border border-black/[.12] rounded-sm px-4 py-2.5 text-sm text-stone-600 focus:outline-none focus:border-gold-500 focus:ring-1 focus:ring-gold-500/20 transition"
                   >
                     <option value="">Select package (optional)</option>
-                    <option value="silver">Silver \u2014 ₹9,999</option>
+                    <option value="silver">Silver \u2014 â‚¹9,999</option>
                     <option value="gold">Gold \u2014 On request</option>
                     <option value="platinum">Platinum \u2014 Custom</option>
                     <option value="unsure">Not sure yet</option>
@@ -201,7 +201,7 @@ export default function ContactPage() {
               </form>
             </div>
 
-            {/* ─── RIGHT: SIDEBAR ─── */}
+            {/* â”€â”€â”€ RIGHT: SIDEBAR â”€â”€â”€ */}
             <div className="space-y-6">
               {/* Talk to us */}
               <div className="bg-white border border-black/[.12] rounded-lg p-6 shadow-sm">
@@ -229,7 +229,7 @@ export default function ContactPage() {
                 <h3 className="font-display text-lg font-medium mb-2">Contact info</h3>
                 <div className="flex items-start gap-3 text-sm text-stone-600">
                   <Clock className="w-4 h-4 text-gold-500 mt-0.5 shrink-0" />
-                  <span>Mon \u2013 Sun, 9:00 AM \u2013 9:00 PM</span>
+                  <span>Mon – Sun, 9:00 AM – 9:00 PM</span>
                 </div>
                 <div className="flex items-start gap-3 text-sm text-stone-600">
                   <MapPin className="w-4 h-4 text-gold-500 mt-0.5 shrink-0" />

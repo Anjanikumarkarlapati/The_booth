@@ -20,7 +20,7 @@ const SERVICES = [
     title: 'Instant Photo Booth',
     description:
       'Professional DSLR quality prints in seconds. Perfect for any event where guests want a tangible memory to take home.',
-    includes: ['Instant 4\u00D76 prints', 'DSLR camera', 'Studio lighting', 'Props box', 'Booth assistant'],
+    includes: ['Instant 4×6 prints', 'DSLR camera', 'Studio lighting', 'Props box', 'Booth assistant'],
   },
   {
     image: PHOTOS.wedding,
@@ -45,10 +45,10 @@ const SERVICES = [
   },
   {
     image: PHOTOS.guests2,
-    title: '360\u00B0 Video Booth',
+    title: '360° Video Booth',
     description:
       'Cinematic 360-degree slow-motion video on a rotating platform. Guests receive a shareable video clip instantly.',
-    includes: ['360\u00B0 rotating platform', 'Slow-motion video', 'Instant digital sharing', 'LED ring light', 'Technician'],
+    includes: ['360° rotating platform', 'Slow-motion video', 'Instant digital sharing', 'LED ring light', 'Technician'],
   },
   {
     image: PHOTOS.engagement,
@@ -66,14 +66,14 @@ const ADDONS = [
   { icon: Palette, label: 'Custom backdrops' },
   { icon: Flower2, label: 'Flower wall' },
   { icon: Lightbulb, label: 'LED booth' },
-  { icon: RotateCw, label: '360\u00B0 platform' },
+  { icon: RotateCw, label: '360° platform' },
   { icon: Stamp, label: 'Event branding' },
 ];
 
 export default function ServicesPage() {
   return (
     <>
-      {/* ════════ HERO ════════ */}
+      {/* â•â•â•â•â•â•â•â• HERO â•â•â•â•â•â•â•â• */}
       <section className="relative on-dark bg-ink-800 py-20 md:py-28 overflow-hidden">
         <Image
           src={PHOTOS.guests2}
@@ -95,7 +95,7 @@ export default function ServicesPage() {
         </div>
       </section>
 
-      {/* ════════ SERVICE CARDS ════════ */}
+      {/* â•â•â•â•â•â•â•â• SERVICE CARDS â•â•â•â•â•â•â•â• */}
       <section className="bg-paper py-16 md:py-24">
         <div className="max-w-[1240px] mx-auto px-6">
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -137,7 +137,7 @@ export default function ServicesPage() {
         </div>
       </section>
 
-      {/* ════════ ADD-ONS ════════ */}
+      {/* â•â•â•â•â•â•â•â• ADD-ONS â•â•â•â•â•â•â•â• */}
       <section className="on-dark bg-ink-800 py-16 md:py-24">
         <div className="max-w-[1240px] mx-auto px-6">
           <SectionHeading eyebrow="Add-ons" title="Make your booth even better" />

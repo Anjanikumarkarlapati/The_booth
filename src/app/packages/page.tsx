@@ -7,17 +7,17 @@ import SectionHeading from '@/components/SectionHeading';
 const PACKAGES = [
   {
     tier: 'Silver',
-    price: '₹9,999',
-    priceNote: 'Per event · Inclusive of taxes',
+    price: 'â‚¹9,999',
+    priceNote: 'Per event Â· Inclusive of taxes',
     badge: 'Most Booked',
     featured: true,
     includes: [
-      '100 instant prints (4\u00D76)',
+      '100 instant prints (4×6)',
       'Professional photographer',
       'Booth assistant',
       'Premium printer on-site',
       'Premium frames',
-      'Live printing 3\u20134 hours',
+      'Live printing 3–4 hours',
       'Props box',
       'Backdrop setup',
     ],
@@ -29,12 +29,12 @@ const PACKAGES = [
     badge: '200 prints',
     featured: false,
     includes: [
-      '200 instant prints (4\u00D76)',
+      '200 instant prints (4×6)',
       'Professional photographer',
       'Booth assistant',
       'Premium printer on-site',
       'Premium frames',
-      'Live printing 4\u20135 hours',
+      'Live printing 4–5 hours',
       'Custom backdrop',
       'Custom branding on prints',
       'Digital copies of all photos',
@@ -55,7 +55,7 @@ const PACKAGES = [
       'Premium frames',
       'Full-day coverage (up to 8 hours)',
       'Custom backdrop & branding',
-      '360\u00B0 video booth included',
+      '360° video booth included',
       'Flower wall',
       'Digital gallery',
       'Priority scheduling',
@@ -64,16 +64,16 @@ const PACKAGES = [
 ];
 
 const EXTRAS = [
-  '₹80 per extra print beyond package limit',
+  'â‚¹80 per extra print beyond package limit',
   'Custom branding (names, date, logo) \u2014 included from Gold',
-  'Additional hours at ₹2,000/hour',
+  'Additional hours at â‚¹2,000/hour',
   'Travel outside Mumbai \u2014 charged per distance',
 ];
 
 export default function PackagesPage() {
   return (
     <>
-      {/* ════════ HERO ════════ */}
+      {/* â•â•â•â•â•â•â•â• HERO â•â•â•â•â•â•â•â• */}
       <section className="relative on-dark bg-ink-800 py-20 md:py-28 overflow-hidden">
         <Image
           src={PHOTOS.frames}
@@ -95,7 +95,7 @@ export default function PackagesPage() {
         </div>
       </section>
 
-      {/* ════════ PACKAGES GRID ════════ */}
+      {/* â•â•â•â•â•â•â•â• PACKAGES GRID â•â•â•â•â•â•â•â• */}
       <section className="bg-paper py-16 md:py-24">
         <div className="max-w-[1240px] mx-auto px-6">
           <div className="grid md:grid-cols-3 gap-6 items-start">
@@ -144,7 +144,7 @@ export default function PackagesPage() {
             ))}
           </div>
 
-          {/* ════════ EXTRAS INFO ════════ */}
+          {/* â•â•â•â•â•â•â•â• EXTRAS INFO â•â•â•â•â•â•â•â• */}
           <div className="mt-12 border border-gold-500/30 bg-gold-100/50 rounded-lg p-6">
             <div className="flex items-start gap-3 mb-4">
               <Info className="w-5 h-5 text-gold-600 mt-0.5 shrink-0" />
