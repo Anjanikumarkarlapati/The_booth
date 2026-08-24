@@ -3,7 +3,7 @@
 import { useState, useRef, useEffect } from 'react';
 import { Map, Satellite, Navigation, ExternalLink } from 'lucide-react';
 
-type MapView = '3d' | 'satellite' | 'normal';
+type MapView = 'normal' | 'satellite';
 
 const LOCATION = {
   name: 'Gajare Photography',
@@ -14,29 +14,10 @@ const LOCATION = {
   directionsUrl: 'https://www.google.com/maps/dir//Gajare+Photography+-+Best+Photographer+in+Mumbai,+Room+No+-+503+,+6-C+,+Malvani+Sai+Savli+CHSL+New+Mahada+Colony,+near+Billabong+School,+Jankalyan+Nagar,+Malad+West,+Mumbai,+Maharashtra+400095/@19.2041522,72.8198668,17z',
 };
 
-function getEmbedUrl(view: MapView): string {
-  const base = 'https://www.google.com/maps/embed?pb=';
-  // Use place embed for reliable loading without API key
-  const placeQuery = encodeURIComponent('Gajare Photography Mumbai Malad West');
-
-  switch (view) {
-    case '3d':
-      // Satellite with tilt for 3D effect
-      return `https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1885!2d${LOCATION.lng}!3d${LOCATION.lat}!2m3!1f0!2f45!3f0!3m2!1i1024!2i768!4f35!3m3!1m2!1s${LOCATION.placeId}!2sGajare%20Photography!5e1!3m2!1sen!2sin`;
-    case 'satellite':
-      return `https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3000!2d${LOCATION.lng}!3d${LOCATION.lat}!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s${LOCATION.placeId}!2sGajare%20Photography!5e1!3m2!1sen!2sin`;
-    case 'normal':
-    default:
-      return `https://www.google.com/maps/embed/v1/place?key=&q=${placeQuery}&center=${LOCATION.lat},${LOCATION.lng}&zoom=16&maptype=roadmap`;
-  }
-}
-
 // Fallback embed URL that works without API key
 function getFallbackUrl(view: MapView): string {
   const q = encodeURIComponent('Gajare Photography Malad West Mumbai');
   switch (view) {
-    case '3d':
-      return `https://maps.google.com/maps?q=${q}&t=k&z=18&ie=UTF8&iwloc=&output=embed&layer=transit&tilt=45`;
     case 'satellite':
       return `https://maps.google.com/maps?q=${q}&t=k&z=17&ie=UTF8&iwloc=&output=embed`;
     case 'normal':
@@ -46,7 +27,7 @@ function getFallbackUrl(view: MapView): string {
 }
 
 export default function LocationMap() {
-  const [view, setView] = useState<MapView>('3d');
+  const [view, setView] = useState<MapView>('normal');
   const [loaded, setLoaded] = useState(false);
   const [inView, setInView] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
@@ -69,9 +50,8 @@ export default function LocationMap() {
   }, []);
 
   const views: { key: MapView; label: string; icon: typeof Map }[] = [
-    { key: '3d', label: '3D', icon: Navigation },
-    { key: 'satellite', label: 'Satellite', icon: Satellite },
     { key: 'normal', label: 'Map', icon: Map },
+    { key: 'satellite', label: 'Satellite', icon: Satellite },
   ];
 
   return (
@@ -124,7 +104,7 @@ export default function LocationMap() {
           <div className="absolute inset-0 flex items-center justify-center bg-ink-800">
             <div className="text-center">
               <div className="w-10 h-10 border-2 border-gold-500/30 border-t-gold-500 rounded-full animate-spin mx-auto mb-3" />
-              <p className="text-white/40 text-sm">Loading {view === '3d' ? '3D' : view} view...</p>
+              <p className="text-white/40 text-sm">Loading {view === 'satellite' ? 'Satellite' : 'Map'} view...</p>
             </div>
           </div>
         )}

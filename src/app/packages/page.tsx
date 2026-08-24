@@ -2,13 +2,12 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { Check, Info } from 'lucide-react';
 import { PHOTOS } from '@/lib/photos';
-import SectionHeading from '@/components/SectionHeading';
 
 const PACKAGES = [
   {
     tier: 'Silver',
-    price: 'â‚¹9,999',
-    priceNote: 'Per event Â· Inclusive of taxes',
+    price: '₹9,999',
+    priceNote: 'Per event · Inclusive of taxes',
     badge: 'Most Booked',
     featured: true,
     includes: [
@@ -64,9 +63,9 @@ const PACKAGES = [
 ];
 
 const EXTRAS = [
-  'â‚¹80 per extra print beyond package limit',
+  '₹80 per extra print beyond package limit',
   'Custom branding (names, date, logo) \u2014 included from Gold',
-  'Additional hours at â‚¹2,000/hour',
+  'Additional hours at ₹2,000/hour',
   'Travel outside Mumbai \u2014 charged per distance',
 ];
 
@@ -102,11 +101,7 @@ export default function PackagesPage() {
             {PACKAGES.map(({ tier, price, priceNote, badge, featured, includes }) => (
               <div
                 key={tier}
-                className={`relative rounded-lg p-6 bg-white shadow-sm flex flex-col ${
-                  featured
-                    ? 'border-2 border-gold-500 shadow-lg'
-                    : 'border border-black/[.12]'
-                }`}
+                className={`relative rounded-xl p-8 bg-white flex flex-col transition-all duration-500 will-change-transform ${featured ? 'border-2 border-gold-500 shadow-[0_8px_40px_-12px_rgba(212,175,55,0.4)] scale-105 z-10' : 'border border-black/[.08] shadow-[0_4px_24px_-12px_rgba(0,0,0,0.1)] hover:-translate-y-2 hover:shadow-[0_12px_40px_-12px_rgba(0,0,0,0.15)] hover:border-gold-500/30'}`}
               >
                 {badge && (
                   <span
@@ -120,7 +115,7 @@ export default function PackagesPage() {
                   </span>
                 )}
                 <p className="gp-eyebrow mt-2">{tier}</p>
-                <p className="font-display text-4xl font-medium mt-2">{price}</p>
+                <p className="font-display text-5xl font-semibold mt-3 text-ink-900 tracking-tight">{price}</p>
                 <p className="text-stone-500 text-sm mt-1 mb-5">{priceNote}</p>
                 <ul className="space-y-3 flex-1">
                   {includes.map((item) => (

@@ -8,9 +8,12 @@ export default function PageTransition({ children }: { children: ReactNode }) {
   const [visible, setVisible] = useState(true);
 
   useEffect(() => {
-    setVisible(false);
+    const frame = requestAnimationFrame(() => setVisible(false));
     const timer = setTimeout(() => setVisible(true), 50);
-    return () => clearTimeout(timer);
+    return () => {
+      cancelAnimationFrame(frame);
+      clearTimeout(timer);
+    };
   }, [pathname]);
 
   return (

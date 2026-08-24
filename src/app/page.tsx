@@ -1,5 +1,6 @@
 'use client';
 
+import LocationMap from '@/components/LocationMap';
 import Image from 'next/image';
 import Link from 'next/link';
 import {
@@ -104,26 +105,34 @@ export default function HomePage() {
   return (
     <>
       {/* ════════ HERO ════════ */}
-      <section className="relative min-h-[700px] lg:min-h-[85vh] flex items-center bg-ink-900 overflow-hidden">
+      <section className="relative min-h-[700px] lg:min-h-[90vh] flex items-center bg-ink-900 overflow-hidden">
         <Image
           src={PHOTOS.hero}
           alt="Photo booth at a premium wedding event"
           fill
-          className="object-cover opacity-40 animate-ken-burns"
+          className="object-cover opacity-35 animate-ken-burns"
           priority
           unoptimized
         />
+        {/* Multi-layer gradient for cinematic depth */}
         <div
           className="absolute inset-0"
           style={{
-            background: 'linear-gradient(135deg, rgba(10,10,10,.94) 0%, rgba(10,10,10,.7) 50%, rgba(10,10,10,.4) 100%)',
+            background: 'linear-gradient(160deg, rgba(10,10,10,.96) 0%, rgba(10,10,10,.75) 40%, rgba(10,10,10,.5) 70%, rgba(10,10,10,.3) 100%)',
+          }}
+        />
+        {/* Subtle gold radial accent */}
+        <div
+          className="absolute inset-0 opacity-[0.04]"
+          style={{
+            background: 'radial-gradient(ellipse 60% 50% at 20% 80%, rgba(212,175,55,1) 0%, transparent 70%)',
           }}
         />
         <div className="absolute bottom-0 left-0 right-0 h-px gold-line-animated" />
 
         <div className="relative z-10 max-w-[1240px] mx-auto px-6 py-20 md:py-28 w-full">
           <Reveal delay={0}>
-            <p className="gp-eyebrow flex items-center gap-2.5 mb-6">
+            <p className="gp-eyebrow flex items-center gap-2.5 mb-6 text-gold-500" style={{ color: '#D4AF37' }}>
               <span className="w-8 h-8 rounded-full bg-gold-500/10 border border-gold-500/30 flex items-center justify-center">
                 <Play className="w-3 h-3 text-gold-500" />
               </span>
@@ -132,10 +141,11 @@ export default function HomePage() {
           </Reveal>
 
           <Reveal delay={150}>
-            <h1 className="font-display text-white text-5xl md:text-6xl lg:text-[84px] font-bold max-w-4xl leading-[1.04] tracking-[-0.01em]">
-              Mumbai&apos;s Premium{' '}
-              <span className="text-gold-gradient">Instant Photo Booth</span>{' '}
-              Service
+            <h1
+              className="font-display text-gold-500 text-5xl md:text-6xl lg:text-[84px] font-bold max-w-4xl leading-[1.04] tracking-[-0.01em] text-balance"
+              style={{ color: '#D4AF37' }}
+            >
+              Mumbai&apos;s Premium Instant Photo Booth Service
             </h1>
           </Reveal>
 
@@ -208,16 +218,16 @@ export default function HomePage() {
       </section>
 
       {/* ════════ STATS BAR ════════ */}
-      <section className="bg-ink-800 py-10 border-t border-b border-gold-500/10">
+      <section className="bg-ink-800 py-12 border-t border-b border-gold-500/10">
         <div className="max-w-[1240px] mx-auto px-6">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
             {STATS.map(({ value, suffix, label }, i) => (
-              <Reveal key={label} delay={i * 100} direction="scale">
-                <div className="text-center">
-                  <p className="font-display text-3xl md:text-4xl text-white font-bold">
+              <Reveal key={label} delay={i * 100} direction="scale" spring>
+                <div className="glass-stat-card rounded-lg p-6 text-center">
+                  <p className="font-display text-3xl md:text-4xl text-white font-bold stat-glow">
                     <AnimatedCounter target={value} suffix={suffix} />
                   </p>
-                  <p className="text-white/50 text-sm mt-1">{label}</p>
+                  <p className="text-white/50 text-sm mt-1.5 tracking-wide">{label}</p>
                 </div>
               </Reveal>
             ))}
@@ -226,7 +236,7 @@ export default function HomePage() {
       </section>
 
       {/* ════════ WHY CHOOSE US ════════ */}
-      <section className="bg-paper py-20 md:py-28 section-transition">
+      <section className="bg-paper section-rhythm section-transition">
         <div className="max-w-[1240px] mx-auto px-6">
           <Reveal>
             <SectionHeading
@@ -237,9 +247,9 @@ export default function HomePage() {
           </Reveal>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8">
             {FEATURES.map(({ icon: Icon, title }, i) => (
-              <Reveal key={title} delay={i * 80} direction="scale">
-                <div className="group flex flex-col items-center text-center p-6 rounded-lg bg-white border border-transparent hover:border-gold-500/30 hover:shadow-lg transition-all duration-[280ms]">
-                  <div className="w-14 h-14 rounded-full border-2 border-gold-500/40 group-hover:border-gold-500 group-hover:bg-gold-500/5 flex items-center justify-center mb-4 transition-all duration-[280ms]">
+              <Reveal key={title} delay={i * 80} direction="scale" spring>
+                <div className="group flex flex-col items-center text-center p-6 rounded-lg bg-white border border-transparent card-shine hover:border-gold-500/30 hover:shadow-lg transition-all duration-[280ms]">
+                  <div className="w-14 h-14 rounded-full border-2 border-gold-500/40 group-hover:border-gold-500 group-hover:bg-gold-500/5 group-hover:scale-110 flex items-center justify-center mb-4 transition-all duration-[280ms]">
                     <Icon className="w-6 h-6 text-gold-500" />
                   </div>
                   <h3 className="font-display text-sm md:text-base font-medium text-[var(--text-heading)]">{title}</h3>
@@ -251,7 +261,7 @@ export default function HomePage() {
       </section>
 
       {/* ════════ SERVICES ════════ */}
-      <section className="on-dark bg-ink-800 py-20 md:py-28">
+      <section className="on-dark bg-ink-800 section-rhythm">
         <div className="max-w-[1240px] mx-auto px-6">
           <Reveal>
             <SectionHeading
@@ -263,7 +273,7 @@ export default function HomePage() {
           <div className="grid md:grid-cols-3 gap-6">
             {SERVICES_PREVIEW.map(({ image, title, body }, i) => (
               <Reveal key={title} delay={i * 150}>
-                <Link href="/services" className="group block card-hover bg-[var(--bg-surface)] rounded-lg overflow-hidden border border-white/[.1]">
+                <Link href="/services" className="group block card-shine card-hover bg-[var(--bg-surface)] rounded-lg overflow-hidden border border-white/[.1]">
                   <div className="relative aspect-[4/3] overflow-hidden">
                     <Image
                       src={image}
@@ -272,7 +282,7 @@ export default function HomePage() {
                       className="object-cover card-image"
                       unoptimized
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                   </div>
                   <div className="p-6">
                     <h3 className="font-display text-lg font-medium text-white mb-2">{title}</h3>
@@ -299,15 +309,15 @@ export default function HomePage() {
       </section>
 
       {/* ════════ FEATURED PACKAGE ════════ */}
-      <section className="bg-paper py-20 md:py-28 section-transition">
+      <section className="bg-paper section-rhythm section-transition">
         <div className="max-w-[1240px] mx-auto px-6">
-          <div className="grid md:grid-cols-2 gap-12 lg:gap-16 items-center">
+          <div className="grid md:grid-cols-2 gap-12 lg:gap-20 items-center">
             <Reveal direction="left">
               <div>
                 <p className="gp-eyebrow mb-4">Featured Package</p>
                 <h2 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold leading-[1.08] tracking-[-0.01em] mb-5">
                   Premium Instant Photo Booth at{' '}
-                  <span className="text-gold-gradient">&#x20B9;9,999</span>
+                  <span className="text-gold-shimmer">&#x20B9;9,999</span>
                 </h2>
                 <p className="text-stone-600 leading-relaxed mb-8 text-base">
                   Our most-booked package delivers everything you need. A professional team arrives,
@@ -331,7 +341,7 @@ export default function HomePage() {
             </Reveal>
 
             <Reveal direction="right" delay={200}>
-              <div className="relative border-2 border-gold-500 rounded-lg p-7 bg-white shadow-lg hover:shadow-xl transition-shadow duration-300">
+              <div className="relative border-2 border-gold-500 rounded-lg p-7 bg-white shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1" style={{ animation: 'border-glow 3s ease-in-out infinite' }}>
                 <div className="absolute -inset-0.5 bg-gradient-to-br from-gold-400/20 via-transparent to-gold-600/20 rounded-lg blur-sm -z-10" />
                 <span className="absolute -top-3.5 left-6 bg-gold-500 text-ink-800 text-[11px] tracking-[0.14em] uppercase font-bold px-4 py-1.5 rounded-sm shadow-sm">
                   Most Booked
@@ -363,7 +373,7 @@ export default function HomePage() {
       </section>
 
       {/* ════════ PHOTO BOOTH EXAMPLES ════════ */}
-      <section className="on-dark bg-ink-800 py-20 md:py-28">
+      <section className="on-dark bg-ink-800 section-rhythm">
         <div className="max-w-[1240px] mx-auto px-6">
           <Reveal>
             <SectionHeading
@@ -420,7 +430,7 @@ export default function HomePage() {
       </section>
 
       {/* ════════ GALLERY TEASER ════════ */}
-      <section className="bg-mist py-20 md:py-28 section-transition">
+      <section className="bg-mist section-rhythm section-transition">
         <div className="max-w-[1240px] mx-auto px-6">
           <Reveal>
             <SectionHeading eyebrow="Gallery" title="Moments we have captured" lede="Real events, real prints, real celebrations across Mumbai." />
@@ -466,7 +476,7 @@ export default function HomePage() {
       </section>
 
       {/* ════════ HOW IT WORKS ════════ */}
-      <section className="on-dark bg-ink-800 py-20 md:py-28">
+      <section className="on-dark bg-ink-800 section-rhythm">
         <div className="max-w-[1240px] mx-auto px-6">
           <Reveal>
             <SectionHeading eyebrow="How It Works" title="Five simple steps to your booth" lede="From first message to prints in hand, we handle everything." />
@@ -492,7 +502,7 @@ export default function HomePage() {
       </section>
 
       {/* ════════ FAQ ════════ */}
-      <section className="bg-paper py-20 md:py-28 section-transition">
+      <section className="bg-paper section-rhythm section-transition">
         <div className="max-w-[1240px] mx-auto px-6">
           <div className="grid md:grid-cols-[1fr_1.5fr] gap-12 lg:gap-16">
             <Reveal direction="left">
@@ -531,8 +541,22 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* ════════ LOCATION MAP ════════ */}
+      <section className="bg-paper py-16 md:py-24 border-t border-black/[.08]">
+        <div className="max-w-[1240px] mx-auto px-6">
+          <SectionHeading
+            eyebrow="Visit & Studio Location"
+            title="Find us in Malad West, Mumbai"
+            lede="Our studio is based in Mumbai. Drop by or reach out to discuss your event photo booth setup."
+          />
+          <div className="mt-10">
+            <LocationMap />
+          </div>
+        </div>
+      </section>
+
       {/* ════════ FINAL CTA ════════ */}
-      <section className="relative on-dark bg-ink-900 py-24 md:py-32 overflow-hidden">
+      <section className="relative on-dark bg-ink-900 py-28 md:py-36 overflow-hidden">
         <Image
           src={PHOTOS.wedding3}
           alt="Event celebration"

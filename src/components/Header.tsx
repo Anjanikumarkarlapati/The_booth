@@ -31,7 +31,8 @@ export default function Header() {
 
   // Close mobile menu on route change
   useEffect(() => {
-    setOpen(false);
+    const frame = requestAnimationFrame(() => setOpen(false));
+    return () => cancelAnimationFrame(frame);
   }, [pathname]);
 
   const isActive = (href: string) => {

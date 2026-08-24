@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useRef, useState, type ReactNode } from 'react';
+import { useEffect, useRef, useState, type ReactNode, Children, isValidElement } from 'react';
 
 interface RevealProps {
   children: ReactNode;
@@ -8,6 +8,10 @@ interface RevealProps {
   direction?: 'up' | 'down' | 'left' | 'right' | 'scale';
   className?: string;
   once?: boolean;
+  /** Enable stagger mode: each direct child animates sequentially */
+  stagger?: number;
+  /** Use spring physics for more organic motion */
+  spring?: boolean;
 }
 
 export default function Reveal({
@@ -16,6 +20,8 @@ export default function Reveal({
   direction = 'up',
   className = '',
   once = true,
+  stagger,
+  spring = false,
 }: RevealProps) {
   const ref = useRef<HTMLDivElement>(null);
   const [visible, setVisible] = useState(false);
@@ -24,11 +30,10 @@ export default function Reveal({
     const el = ref.current;
     if (!el) return;
 
-    // Respect prefers-reduced-motion — render immediately
     const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     if (prefersReducedMotion) {
-      setVisible(true);
-      return;
+      const frame = requestAnimationFrame(() => setVisible(true));
+      return () => cancelAnimationFrame(frame);
     }
 
     const observer = new IntersectionObserver(
@@ -40,21 +45,50 @@ export default function Reveal({
           setVisible(false);
         }
       },
-      { threshold: 0.1, rootMargin: '-10% 0px' }
+      { threshold: 0.08, rootMargin: '-5% 0px' }
     );
 
     observer.observe(el);
     return () => observer.disconnect();
   }, [once]);
 
-  // UX Pro recommended: subtle 12px offset, 350ms duration, power1.out easing
+  const easing = spring
+    ? 'cubic-bezier(.34, 1.56, .64, 1)'
+    : 'cubic-bezier(.22, .61, .36, 1)';
+
+  const duration = spring ? 600 : 420;
+
   const transforms: Record<string, string> = {
-    up: 'translateY(12px)',
-    down: 'translateY(-12px)',
-    left: 'translateX(16px)',
-    right: 'translateX(-16px)',
-    scale: 'scale(0.97)',
+    up: 'translateY(20px)',
+    down: 'translateY(-20px)',
+    left: 'translateX(24px)',
+    right: 'translateX(-24px)',
+    scale: 'scale(0.96)',
   };
+
+  // Stagger mode: animate each child with increasing delay
+  if (stagger && visible) {
+    const childArray = Children.toArray(children);
+    return (
+      <div ref={ref} className={className}>
+        {childArray.map((child, i) => {
+          if (!isValidElement(child)) return child;
+          return (
+            <div
+              key={i}
+              style={{
+                opacity: visible ? 1 : 0,
+                transform: visible ? 'none' : transforms[direction],
+                transition: `opacity ${duration}ms ${easing} ${delay + i * stagger}ms, transform ${duration}ms ${easing} ${delay + i * stagger}ms`,
+              }}
+            >
+              {child}
+            </div>
+          );
+        })}
+      </div>
+    );
+  }
 
   return (
     <div
@@ -63,7 +97,7 @@ export default function Reveal({
       style={{
         opacity: visible ? 1 : 0,
         transform: visible ? 'none' : transforms[direction],
-        transition: `opacity 350ms cubic-bezier(.25,.46,.45,.94) ${delay}ms, transform 350ms cubic-bezier(.25,.46,.45,.94) ${delay}ms`,
+        transition: `opacity ${duration}ms ${easing} ${delay}ms, transform ${duration}ms ${easing} ${delay}ms`,
         willChange: visible ? 'auto' : 'opacity, transform',
       }}
     >

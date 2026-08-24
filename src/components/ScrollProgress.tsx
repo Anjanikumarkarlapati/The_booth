@@ -7,22 +7,28 @@ export default function ScrollProgress() {
 
   useEffect(() => {
     const handleScroll = () => {
-      const scrollTop = window.scrollY;
-      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
-      const scrollPercent = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
-      setProgress(scrollPercent);
+      const scrollHeight = document.documentElement.scrollHeight - window.innerHeight;
+      if (scrollHeight > 0) {
+        setProgress(window.scrollY / scrollHeight);
+      }
     };
 
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  // Hide when at top
+  if (progress < 0.01) return null;
+
   return (
-    <div className="fixed top-0 left-0 right-0 z-[60] h-[3px] pointer-events-none">
-      <div
-        className="h-full bg-gradient-to-r from-gold-600 via-gold-500 to-gold-400 transition-[width] duration-150 ease-out"
-        style={{ width: `${progress}%` }}
-      />
-    </div>
+    <div
+      className="scroll-progress"
+      style={{ transform: `scaleX(${progress})` }}
+      role="progressbar"
+      aria-valuenow={Math.round(progress * 100)}
+      aria-valuemin={0}
+      aria-valuemax={100}
+      aria-label="Reading progress"
+    />
   );
 }

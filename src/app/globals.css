@@ -128,26 +128,28 @@ textarea, [contenteditable="true"] {
 }
 
 /* ─── BASE RESETS ─── */
-html {
-  scroll-behavior: smooth;
-  scroll-padding-top: 82px;
-}
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 82px;
+  }
 
-body {
-  font-family: var(--font-body);
-  background: var(--bg-page);
-  color: var(--text-body);
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  line-height: 1.75;
-  font-size: 15.5px;
-  overflow-x: hidden;
-}
+  body {
+    font-family: var(--font-body);
+    background: var(--bg-page);
+    color: var(--text-body);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    line-height: 1.75;
+    font-size: 15.5px;
+    overflow-x: hidden;
+  }
 
-h1, h2, h3, h4, h5, h6 {
-  font-family: var(--font-display);
-  color: var(--text-heading);
-  line-height: 1.15;
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-display);
+    color: var(--text-heading);
+    line-height: 1.15;
+  }
 }
 
 /* ─── UTILITY CLASSES ─── */
@@ -419,6 +421,195 @@ html {
   color: var(--ink-800);
 }
 
+/* ─── ENHANCED ANIMATION SYSTEM ─── */
+@keyframes parallax-float {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  33% { transform: translateY(-6px) rotate(0.5deg); }
+  66% { transform: translateY(3px) rotate(-0.3deg); }
+}
+
+@keyframes glow-pulse {
+  0%, 100% { opacity: 0.6; }
+  50% { opacity: 1; }
+}
+
+@keyframes slide-in-from-bottom {
+  from { opacity: 0; transform: translateY(32px) scale(0.98); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+@keyframes border-glow {
+  0%, 100% { border-color: rgba(212, 175, 55, 0.2); }
+  50% { border-color: rgba(212, 175, 55, 0.5); }
+}
+
+@keyframes whatsapp-ring {
+  0% { transform: scale(1); opacity: 0.8; }
+  50% { transform: scale(1.5); opacity: 0; }
+  100% { transform: scale(1.5); opacity: 0; }
+}
+
+/* ─── PREMIUM GLASS EFFECTS ─── */
+.glass-elevated {
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(20px) saturate(1.2);
+  -webkit-backdrop-filter: blur(20px) saturate(1.2);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.05), 0 4px 24px rgba(0, 0, 0, 0.12);
+}
+
+.glass-stat-card {
+  background: rgba(255, 255, 255, 0.04);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(212, 175, 55, 0.12);
+  transition: all var(--dur-base) var(--ease-lux);
+}
+.glass-stat-card:hover {
+  background: rgba(255, 255, 255, 0.07);
+  border-color: rgba(212, 175, 55, 0.3);
+  transform: translateY(-2px);
+}
+
+/* ─── TEXT UTILITIES ─── */
+.text-balance {
+  text-wrap: balance;
+}
+
+.text-gold-shimmer {
+  background: linear-gradient(
+    90deg,
+    var(--gold-600) 0%,
+    var(--gold-400) 25%,
+    var(--gold-300) 50%,
+    var(--gold-400) 75%,
+    var(--gold-600) 100%
+  );
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: shimmer-gold 4s ease-in-out infinite;
+}
+
+/* ─── IMPROVED CARD INTERACTIONS ─── */
+.card-premium {
+  transition: all var(--dur-base) var(--ease-lux);
+  border: 1px solid var(--border-hairline);
+  border-radius: 4px;
+}
+.card-premium:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-3), 0 0 0 1px rgba(212, 175, 55, 0.15);
+  border-color: rgba(212, 175, 55, 0.35);
+}
+
+.card-tilt {
+  transition: transform var(--dur-base) var(--ease-lux);
+  transform-style: preserve-3d;
+  perspective: 1000px;
+}
+
+/* ─── SCROLL PROGRESS BAR ─── */
+.scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  z-index: 9999;
+  background: linear-gradient(90deg, var(--gold-500), var(--gold-300));
+  transform-origin: left;
+  pointer-events: none;
+}
+
+/* ─── WHATSAPP PULSE RING ─── */
+.whatsapp-ring::before {
+  content: '';
+  position: absolute;
+  inset: -4px;
+  border-radius: 50%;
+  border: 2px solid #25D366;
+  animation: whatsapp-ring 2s ease-in-out infinite;
+}
+
+/* ─── HERO PARALLAX DEPTH ─── */
+.hero-depth-1 {
+  animation: parallax-float 8s ease-in-out infinite;
+}
+.hero-depth-2 {
+  animation: parallax-float 12s ease-in-out infinite;
+  animation-delay: -2s;
+}
+
+/* ─── STATS COUNTER GLOW ─── */
+.stat-glow {
+  text-shadow: 0 0 20px rgba(212, 175, 55, 0.3);
+}
+
+/* ─── SERVICE CARD SHINE EFFECT ─── */
+.card-shine {
+  position: relative;
+  overflow: hidden;
+}
+.card-shine::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(
+    45deg,
+    transparent 40%,
+    rgba(212, 175, 55, 0.03) 45%,
+    rgba(212, 175, 55, 0.06) 50%,
+    rgba(212, 175, 55, 0.03) 55%,
+    transparent 60%
+  );
+  transform: rotate(45deg) translateX(-100%);
+  transition: transform 0.8s var(--ease-lux);
+}
+.card-shine:hover::before {
+  transform: rotate(45deg) translateX(100%);
+}
+
+/* ─── SECTION SPACING RHYTHM ─── */
+.section-rhythm {
+  padding-block: clamp(80px, 10vw, 128px);
+}
+
+/* ─── TOOLTIP ─── */
+.tooltip-label {
+  position: absolute;
+  bottom: calc(100% + 10px);
+  left: 50%;
+  transform: translateX(-50%) translateY(4px);
+  background: var(--ink-800);
+  color: white;
+  font-size: 12px;
+  padding: 6px 12px;
+  border-radius: 4px;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: all var(--dur-fast) var(--ease-lux);
+  box-shadow: 0 4px 12px rgba(0,0,0,.3);
+}
+.tooltip-label::after {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 5px solid transparent;
+  border-top-color: var(--ink-800);
+}
+.group:hover .tooltip-label {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+
 /* ─── REDUCED MOTION ─── */
 @media (prefers-reduced-motion: reduce) {
   *,
@@ -427,9 +618,24 @@ html {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
   }
 
   html {
     scroll-behavior: auto;
+  }
+
+  .hero-depth-1,
+  .hero-depth-2,
+  .animate-ken-burns,
+  .animate-float,
+  .animate-pulse-gold,
+  .animate-shimmer-gold,
+  .animate-gradient-shift {
+    animation: none !important;
+  }
+
+  .whatsapp-ring::before {
+    animation: none !important;
   }
 }

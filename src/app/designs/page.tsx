@@ -3,6 +3,7 @@ import Link from 'next/link';
 import { PHOTOS } from '@/lib/photos';
 import SectionHeading from '@/components/SectionHeading';
 
+
 const LAYOUTS = [
   {
     name: 'Classic 2×6 Strip',
