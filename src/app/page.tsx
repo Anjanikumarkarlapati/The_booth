@@ -478,7 +478,7 @@ export default function HomePage() {
                   {idx < STEPS.length - 1 && (
                     <div className="hidden md:block absolute top-7 left-[calc(50%+32px)] w-[calc(100%-64px)] h-px bg-gradient-to-r from-gold-500/50 to-gold-500/10" />
                   )}
-                  <div className="w-14 h-14 rounded-full bg-gold-500 text-ink-800 flex items-center justify-center font-bold text-base mb-4 shadow-md animate-pulse-gold" style={{ animationDelay: `${idx * 0.5}s` }}>
+                  <div className="w-14 h-14 rounded-full bg-gold-500 text-ink-800 flex items-center justify-center font-bold text-base mb-4 shadow-md">
                     {idx + 1}
                   </div>
                   <Icon className="w-5 h-5 text-gold-400 mb-2" />

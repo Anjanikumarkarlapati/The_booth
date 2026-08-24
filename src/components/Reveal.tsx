@@ -24,7 +24,7 @@ export default function Reveal({
     const el = ref.current;
     if (!el) return;
 
-    // Respect prefers-reduced-motion
+    // Respect prefers-reduced-motion — render immediately
     const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     if (prefersReducedMotion) {
       setVisible(true);
@@ -40,19 +40,20 @@ export default function Reveal({
           setVisible(false);
         }
       },
-      { threshold: 0.15, rootMargin: '-40px 0px' }
+      { threshold: 0.1, rootMargin: '-10% 0px' }
     );
 
     observer.observe(el);
     return () => observer.disconnect();
   }, [once]);
 
+  // UX Pro recommended: subtle 12px offset, 350ms duration, power1.out easing
   const transforms: Record<string, string> = {
-    up: 'translateY(32px)',
-    down: 'translateY(-32px)',
-    left: 'translateX(32px)',
-    right: 'translateX(-32px)',
-    scale: 'scale(0.95)',
+    up: 'translateY(12px)',
+    down: 'translateY(-12px)',
+    left: 'translateX(16px)',
+    right: 'translateX(-16px)',
+    scale: 'scale(0.97)',
   };
 
   return (
@@ -62,8 +63,8 @@ export default function Reveal({
       style={{
         opacity: visible ? 1 : 0,
         transform: visible ? 'none' : transforms[direction],
-        transition: `opacity 800ms cubic-bezier(.22,.61,.36,1) ${delay}ms, transform 800ms cubic-bezier(.22,.61,.36,1) ${delay}ms`,
-        willChange: 'opacity, transform',
+        transition: `opacity 350ms cubic-bezier(.25,.46,.45,.94) ${delay}ms, transform 350ms cubic-bezier(.25,.46,.45,.94) ${delay}ms`,
+        willChange: visible ? 'auto' : 'opacity, transform',
       }}
     >
       {children}
